@@ -171,19 +171,22 @@ const Hero = () => {
           </p>
         </div>
         <div className="flex flex-wrap justify-between w-[100%] gap-y-[40px]">
-          {services.map(item => (
-            <p className="font-catamaran text-[#ffffff] text-[20px] bg-[#252525] rounded-[30px] py-[25px] px-[5px]  w-[30%] text-center relative overflow-hidden max-[970px]:w-[48%] max-[600px]:w-[100%]">
-              {item.text}
-              <Image
+    {services.map((item, index) => ( // 👈 Added 'index' here
+        <p 
+            key={index} // 👈 Added the unique 'key' prop here
+            className="font-catamaran text-[#ffffff] text-[20px] bg-[#252525] rounded-[30px] py-[25px] px-[5px] w-[30%] text-center relative overflow-hidden max-[970px]:w-[48%] max-[600px]:w-[100%]"
+        >
+            {item.text}
+            <Image
                 src={item.image}
                 width={40}
                 height={40}
                 alt="copy"
                 className="absolute right-[-20px] top-[25%]"
-              />
-            </p>
-          ))}
-        </div>
+            />
+        </p>
+    ))}
+</div>
       </section>
       {/* End of services section */}
       <section className="w-[85%] mx-auto my-[120px]">
@@ -196,33 +199,36 @@ const Hero = () => {
             iure praesentium doloremque
           </p>
         </div>
-        {blog.map(item => (
-          <div className="flex justify-between items-center mb-[40px] flex-wrap gap-y-[40px]">
-            <Image
-              src={item.image}
-              width={300}
-              height={320}
-              alt="book"
-              className="w-[35%] h-[300px] object-cover rounded-[10px] max-[600px]:w-[100%]"
-            />
-            <div className="w-[58%] max-[600px]:w-[100%]">
-              <div>
+        {blog.map((item, index) => ( // 👈 Added 'index' here
+    <div 
+        key={index} // 👈 Added the unique 'key' prop here
+        className="flex justify-between items-center mb-[40px] flex-wrap gap-y-[40px]"
+    >
+        <Image
+            src={item.image}
+            width={300}
+            height={320}
+            alt="book"
+            className="w-[35%] h-[300px] object-cover rounded-[10px] max-[600px]:w-[100%]"
+        />
+        <div className="w-[58%] max-[600px]:w-[100%]">
+            <div>
                 <span className="font-raleway inline-block p-[15px] mr-[10px] rounded-[20px] bg-[#353535] text-[#ffffff] text-[16px]">
-                  {item.span1}
+                    {item.span1}
                 </span>
                 <span className="font-raleway inline-block p-[15px] rounded-[20px] bg-[#353535] text-[#ffffff] text-[16px]">
-                  {item.span2}
+                    {item.span2}
                 </span>
-              </div>
-              <h3 className="font-catamaran text-[#ffffff] text-[30px] leading-[1] my-[25px]">
-                {item.title}
-              </h3>
-              <p className="font-raleway text-[#555555] text-[18px]">
-                {item.description}
-              </p>
             </div>
-          </div>
-        ))}
+            <h3 className="font-catamaran text-[#ffffff] text-[30px] leading-[1] my-[25px]">
+                {item.title}
+            </h3>
+            <p className="font-raleway text-[#555555] text-[18px]">
+                {item.description}
+            </p>
+        </div>
+    </div>
+))}
       </section>
       <Footer />
     </>
